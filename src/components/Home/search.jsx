@@ -51,10 +51,10 @@ const Search = () => {
         {/* Left Dropdown */}
         <div className="relative group">
           <select className="appearance-none bg-white border border-gray-300 text-gray-700 text-sm rounded-lg pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm cursor-pointer hover:border-gray-400 transition">
-            <option>All Categories</option>
-            <option>Articles</option>
-            <option>Books</option>
-            <option>Videos</option>
+            <option>English (Naija)</option>
+            <option>Yoruba</option>
+            <option>Igbo</option>
+            <option>Hausa</option>
           </select>
           {/* Custom Arrow Icon */}
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
@@ -71,10 +71,13 @@ const Search = () => {
         {/* Right Dropdown */}
         <div className="relative group">
           <select className="appearance-none bg-white border border-gray-300 text-gray-700 text-sm rounded-lg pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm cursor-pointer hover:border-gray-400 transition">
-            <option>Sort by Date</option>
-            <option>Most Relevant</option>
-            <option>Popularity</option>
-          </select>
+            <option value="Idera">Idera (Female)</option>
+<option value="Jude">Jude (Male)</option>
+<option value="Emma">Emma (Female)</option>
+<option value="Joke">Joke (Female)</option>
+<option value="Osagie">Osagie (Male)</option>
+<option value="Remi">Remi (Female)</option>
+<option value="Tayo">Tayo (Male)</option>
           {/* Custom Arrow Icon */}
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
             <svg
