@@ -3,10 +3,10 @@ import React from "react";
 const Search = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4 p-4">
-      
-      {/* Search Bar */}
+
+      {/* --- Search Bar --- */}
       <div className="flex items-center gap-3 w-full max-w-xl px-5 py-3 bg-white rounded-full shadow-lg border border-gray-200">
-        
+
         {/* Input */}
         <input
           type="text"
@@ -14,7 +14,7 @@ const Search = () => {
           className="flex-1 bg-transparent text-gray-700 placeholder-gray-400 outline-none text-sm"
         />
 
-        {/* Mic Icon (Updated) */}
+        {/* Mic Icon */}
         <button className="text-gray-400 hover:text-gray-600 transition p-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,9 +45,9 @@ const Search = () => {
         </button>
       </div>
 
-      {/* Dropdowns Row (Underneath) */}
+      {/* --- Dropdowns Row --- */}
       <div className="flex justify-between w-full max-w-xl px-2">
-        
+
         {/* Left Dropdown */}
         <div className="relative group">
           <select className="appearance-none bg-white border border-gray-300 text-gray-700 text-sm rounded-lg pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm cursor-pointer hover:border-gray-400 transition">
@@ -72,12 +72,14 @@ const Search = () => {
         <div className="relative group">
           <select className="appearance-none bg-white border border-gray-300 text-gray-700 text-sm rounded-lg pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm cursor-pointer hover:border-gray-400 transition">
             <option value="Idera">Idera (Female)</option>
-<option value="Jude">Jude (Male)</option>
-<option value="Emma">Emma (Female)</option>
-<option value="Joke">Joke (Female)</option>
-<option value="Osagie">Osagie (Male)</option>
-<option value="Remi">Remi (Female)</option>
-<option value="Tayo">Tayo (Male)</option>
+            <option value="Jude">Jude (Male)</option>
+            <option value="Emma">Emma (Female)</option>
+            <option value="Joke">Joke (Female)</option>
+            <option value="Osagie">Osagie (Male)</option>
+            <option value="Remi">Remi (Female)</option>
+            <option value="Tayo">Tayo (Male)</option>
+          </select> 
+          
           {/* Custom Arrow Icon */}
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
             <svg
