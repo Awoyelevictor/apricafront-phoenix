@@ -1,29 +1,32 @@
 import { useState } from "react";
 
-// UPDATED IMPORTS: Pointing to the 'Home' folder
-import Login from "./src/components/Home/Login";
-import Signup from "./src/components/Home/Signup";
+// FIX: Since Navbar, Login, and Signup are in the SAME folder, 
+// use "./Login" instead of "./Home/Login"
+import Login from "./Login";
+import Signup from "./Signup";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false); // Mobile menu state
 
-  // 1. Auth Modal State
+  // Auth Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [authView, setAuthView] = useState("login"); // 'login' or 'signup'
 
-  // 2. Helper Functions
+  // Helper Functions
   const openLogin = (e) => {
-    e.preventDefault(); // Stop the link from jumping
+    e.preventDefault(); 
+    console.log("Opening Login Modal..."); // Debugging log
     setAuthView("login");
     setIsModalOpen(true);
-    setOpen(false); // Close mobile menu if open
+    setOpen(false); 
   };
 
   const openSignup = (e) => {
     e.preventDefault();
+    console.log("Opening Signup Modal..."); // Debugging log
     setAuthView("signup");
     setIsModalOpen(true);
-    setOpen(false); // Close mobile menu if open
+    setOpen(false); 
   };
 
   const closeModal = () => {
@@ -89,15 +92,13 @@ export default function Navbar() {
                   aria-expanded={open}
                   className="p-2 rounded-md inline-flex items-center justify-center text-black hover:bg-black/5"
                 >
-                  {!open ? (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                  ) : (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {open ? (
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  )}
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
                 </button>
               </div>
             </div>
@@ -112,20 +113,11 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-
             <div className="flex gap-3">
-              <a 
-                href="#" 
-                onClick={openLogin}
-                className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full"
-              >
+              <a href="#" onClick={openLogin} className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full">
                 Log in
               </a>
-              <a 
-                href="#" 
-                onClick={openSignup}
-                className="flex-1 text-center px-4 py-3 bg-black text-white rounded-full"
-              >
+              <a href="#" onClick={openSignup} className="flex-1 text-center px-4 py-3 bg-black text-white rounded-full">
                 Sign up for free
               </a>
             </div>
@@ -136,7 +128,8 @@ export default function Navbar() {
       {/* MODAL OVERLAY */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="w-full max-w-[400px]">
+          <div className="w-full max-w-[400px] bg-white rounded-xl shadow-2xl overflow-hidden animate-fade-in">
+             {/* We wrap the components in a div to ensure they have width */}
             {authView === 'login' ? (
               <Login 
                 onClose={closeModal} 
