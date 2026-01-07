@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 // UPDATED IMPORTS: Pointing to the 'Home' folder
-import Login from "./Home/Login";
-import Signup from "./Home/Signup";
+import Login from "./src/components/Home/Login";
+import Signup from "./src/components/Home/Signup";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false); // Mobile menu state
