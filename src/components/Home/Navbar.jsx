@@ -1,4 +1,7 @@
 import { useState } from "react";
+// 1. IMPORT useNavigate
+import { useNavigate } from "react-router-dom"; 
+
 // Since Navbar, Login, and Signup are in the same 'Home' folder:
 import Login from "./Login";
 import Signup from "./Signup";
@@ -7,6 +10,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false); // Mobile menu state
   const [isModalOpen, setIsModalOpen] = useState(false); // Auth Modal state
   const [authView, setAuthView] = useState("login"); // 'login' or 'signup'
+
+  // 2. INITIALIZE NAVIGATION
+  const navigate = useNavigate();
 
   // Open Login Modal
   const openLogin = () => {
@@ -62,7 +68,16 @@ export default function Navbar() {
             {/* Right: Actions */}
             <div className="flex justify-end items-center gap-3">
               <div className="hidden md:flex items-center gap-3">
-                {/* CHANGED TO BUTTONS (Fixed: Prevents page reload) */}
+                
+                {/* --- BOSS BUTTON (DESKTOP) --- */}
+                <button 
+                  onClick={() => navigate('/admin')}
+                  className="px-3 py-1 text-xs font-bold text-red-600 border border-red-200 rounded-md hover:bg-red-50 transition mr-2"
+                >
+                  Admin Demo
+                </button>
+                {/* ----------------------------- */}
+
                 <button 
                   onClick={openLogin}
                   className="px-4 py-1 rounded-full text-sm text-black hover:bg-black/5 transition cursor-pointer"
@@ -105,46 +120,19 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <div className="flex gap-3">
-                <button onClick={openLogin} className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full">
-                  Log in
-                </button>
-                <button onClick={openSignup} className="flex-1 text-center px-4 py-3 bg-black text-white rounded-full">
-                  Sign up for free
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </header>
 
-      {/* MODAL OVERLAY */}
-      {isModalOpen && (
-        // Fixed: z-[1000] ensures it is on top of EVERYTHING
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center">
-          
-          {/* Dark Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={closeModal}
-          ></div>
+              <div className="flex flex-col gap-3">
+                {/* --- BOSS BUTTON (MOBILE) --- */}
+                <button 
+                  onClick={() => {
+                    navigate('/admin');
+                    setOpen(false);
+                  }}
+                  className="w-full text-center px-4 py-2 text-red-600 border border-red-200 rounded-md font-bold text-sm"
+                >
+                  Go to Admin Dashboard
+                </button>
+                {/* ---------------------------- */}
 
-          {/* Modal Content */}
-          <div className="relative z-[1010] w-full max-w-[400px] mx-4">
-            {authView === 'login' ? (
-              <Login 
-                onClose={closeModal} 
-                onSwitchToSignup={() => setAuthView('signup')} 
-              />
-            ) : (
-              <Signup 
-                onClose={closeModal} 
-                onSwitchToLogin={() => setAuthView('login')} 
-              />
-            )}
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
+                <div className="flex gap-3">
+                  <button onClick={openLogin} className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full">
