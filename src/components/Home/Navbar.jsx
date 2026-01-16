@@ -136,3 +136,41 @@ export default function Navbar() {
 
                 <div className="flex gap-3">
                   <button onClick={openLogin} className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full">
+                    Log in
+                  </button>
+                  <button onClick={openSignup} className="flex-1 text-center px-4 py-3 bg-black text-white rounded-full">
+                    Sign up for free
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* MODAL OVERLAY */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center">
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+
+          <div className="relative z-[1010] w-full max-w-[400px] mx-4">
+            {authView === 'login' ? (
+              <Login 
+                onClose={closeModal} 
+                onSwitchToSignup={() => setAuthView('signup')} 
+              />
+            ) : (
+              <Signup 
+                onClose={closeModal} 
+                onSwitchToLogin={() => setAuthView('login')} 
+              />
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
